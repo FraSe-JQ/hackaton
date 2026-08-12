@@ -25,10 +25,11 @@ const normalizeHistory = (row: Record<string, string>): CampaignHistory => ({
 })
 
 export async function loadDemoData() {
+  const dataBase = import.meta.env.BASE_URL
   const [rawCustomers, rawOffers, rawHistory] = await Promise.all([
-    loadCsv<Record<string, string>>('/data/dataset_clientes_demo.csv'),
-    loadCsv<Record<string, string>>('/data/catalogo_ofertas_entrega.csv'),
-    loadCsv<Record<string, string>>('/data/historial_campanias_demo.csv'),
+    loadCsv<Record<string, string>>(`${dataBase}data/dataset_clientes_demo.csv`),
+    loadCsv<Record<string, string>>(`${dataBase}data/catalogo_ofertas_entrega.csv`),
+    loadCsv<Record<string, string>>(`${dataBase}data/historial_campanias_demo.csv`),
   ])
   return { customers: rawCustomers.map(normalizeCustomer), offers: rawOffers.map(normalizeOffer), history: rawHistory.map(normalizeHistory) }
 }
