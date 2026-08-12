@@ -1,0 +1,86 @@
+ofrecimiento_id,cliente_id,oferta_id,fecha,canal,resultado,motivo_rechazo,es_rebate,contactabilidad,medio_probatorio,tipo_cliente,antiguedad_meses,elegible_mt,es_movistar_total,nombre_oferta,tipo_oferta,oferta_es_mt
+OFR0000001,CLI000001,OF004,2026-04-10,Call In,rechazada,mal_momento,False,contactado,registro_plataforma,postpago,17,False,False,Plan Movil Ilimitado,plan_movil,False
+OFR0000002,CLI000001,OF003,2026-03-10,Call Out,aceptada,,False,contactado,chat_log,postpago,17,False,False,Plan Movil Max 50GB,plan_movil,False
+OFR0000003,CLI000001,OF006,2026-06-10,Tienda,pendiente,,False,no_contactado,audio_llamada,postpago,17,False,False,Internet Hogar 200Mb,plan_hogar,False
+OFR0000004,CLI000001,OF004,2026-02-10,Tienda,rechazada,precio,False,contactado,registro_plataforma,postpago,17,False,False,Plan Movil Ilimitado,plan_movil,False
+OFR0000005,CLI000001,OF003,2026-02-10,Digital,aceptada,,False,contactado,registro_plataforma,postpago,17,False,False,Plan Movil Max 50GB,plan_movil,False
+OFR0000006,CLI000002,OF014,2026-06-10,Call In,rechazada,otro,True,contactado,chat_log,,140,False,False,Equipo Smartphone Gama Media,equipo,False
+OFR0000007,CLI000002,OF018,2026-04-10,Call In,aceptada,,False,contactado,audio_llamada,,140,False,False,Paquete Seguridad Digital,paquete_adicional,False
+OFR0000008,CLI000002,OF005,2026-04-10,Call Out,rechazada,ya_tiene_similar,False,contactado,registro_plataforma,,140,False,False,Internet Hogar 100Mb,plan_hogar,False
+OFR0000009,CLI000002,OF002,2026-01-10,Digital,aceptada,,False,contactado,registro_plataforma,,140,False,False,Plan Movil Plus 25GB,plan_movil,False
+OFR0000010,CLI000003,OF009,2026-02-10,Call In,rechazada,no_confia,False,contactado,chat_log,postpago,118,False,False,Internet + Fijo Hogar,plan_hogar,False
+OFR0000011,CLI000004,OF016,2026-01-10,Digital,pendiente,,False,no_contactado,registro_plataforma,prepago,79,False,False,Router WiFi 6,equipo,False
+OFR0000012,CLI000004,OF014,2026-02-10,Tienda,rechazada,no_confia,False,contactado,registro_plataforma,prepago,79,False,False,Equipo Smartphone Gama Media,equipo,False
+OFR0000013,CLI000005,OF014,2026-04-10,Digital,rechazada,ya_tiene_similar,False,contactado,audio_llamada,prepago,78,False,False,Equipo Smartphone Gama Media,equipo,False
+OFR0000014,CLI000005,OF002,2026-05-10,Digital,aceptada,,False,contactado,registro_plataforma,prepago,78,False,False,Plan Movil Plus 25GB,plan_movil,False
+OFR0000015,CLI000006,OF015,2026-06-10,Tienda,aceptada,,False,contactado,chat_log,prepago,155,False,False,Equipo Smartphone Gama Alta,equipo,False
+OFR0000016,CLI000007,OF007,2026-04-10,Digital,aceptada,,False,contactado,audio_llamada,postpago,16,False,False,TV Hogar Sola,plan_hogar,False
+OFR0000017,CLI000007,OF008,2026-05-10,Tienda,rechazada,no_necesita,False,contactado,registro_plataforma,postpago,16,False,False,Internet + TV Hogar,plan_hogar,False
+OFR0000018,CLI000007,OF009,2026-04-10,Tienda,rechazada,precio,True,contactado,registro_plataforma,postpago,16,False,False,Internet + Fijo Hogar,plan_hogar,False
+OFR0000019,CLI000008,OF015,2026-03-10,Digital,rechazada,precio,False,contactado,audio_llamada,prepago,126,False,False,Equipo Smartphone Gama Alta,equipo,False
+OFR0000020,CLI000008,OF010,2026-05-10,Digital,rechazada,precio,False,contactado,chat_log,prepago,126,False,False,Internet + TV + Fijo Hogar,plan_hogar,False
+OFR0000021,CLI000008,OF019,2026-02-10,Digital,aceptada,,False,contactado,registro_plataforma,prepago,126,False,False,Paquete Roaming Internacional,paquete_adicional,False
+OFR0000022,CLI000008,OF001,2026-05-10,Tienda,rechazada,no_necesita,True,contactado,registro_plataforma,prepago,126,False,False,Plan Movil Basico 10GB,plan_movil,False
+OFR0000023,CLI000008,OF014,2026-05-10,Tienda,aceptada,,False,contactado,registro_plataforma,prepago,126,False,False,Equipo Smartphone Gama Media,equipo,False
+OFR0000024,CLI000009,OF002,2026-02-10,Digital,rechazada,precio,False,contactado,audio_llamada,prepago,37,False,False,Plan Movil Plus 25GB,plan_movil,False
+OFR0000025,CLI000009,OF008,2026-05-10,Tienda,rechazada,precio,True,contactado,audio_llamada,prepago,37,False,False,Internet + TV Hogar,plan_hogar,False
+OFR0000026,CLI000009,OF007,2026-05-10,Digital,aceptada,,False,contactado,registro_plataforma,prepago,37,False,False,TV Hogar Sola,plan_hogar,False
+OFR0000027,CLI000009,OF011,2026-05-10,Call In,aceptada,,False,contactado,registro_plataforma,prepago,37,False,False,Upgrade a Plan Plus,upgrade,False
+OFR0000028,CLI000009,OF003,2026-01-10,Digital,aceptada,,False,contactado,audio_llamada,prepago,37,False,False,Plan Movil Max 50GB,plan_movil,False
+OFR0000029,CLI000010,OF004,2026-01-10,Digital,rechazada,no_necesita,True,contactado,audio_llamada,postpago,17,False,False,Plan Movil Ilimitado,plan_movil,False
+OFR0000030,CLI000010,OF017,2026-05-10,Call Out,pendiente,,False,no_contactado,registro_plataforma,postpago,17,False,False,Paquete Streaming Video,paquete_adicional,False
+OFR0000031,CLI000011,OF005,2026-01-10,Tienda,rechazada,otro,False,contactado,audio_llamada,,95,False,False,Internet Hogar 100Mb,plan_hogar,False
+OFR0000032,CLI000011,OF012,2026-01-10,Tienda,rechazada,ya_tiene_similar,True,contactado,registro_plataforma,,95,False,False,Upgrade a Plan Max,upgrade,False
+OFR0000033,CLI000011,OF016,2026-01-10,Digital,rechazada,ya_tiene_similar,False,contactado,audio_llamada,,95,False,False,Router WiFi 6,equipo,False
+OFR0000034,CLI000012,OF001,2026-06-10,Digital,rechazada,ya_tiene_similar,True,contactado,chat_log,postpago,176,False,False,Plan Movil Basico 10GB,plan_movil,False
+OFR0000035,CLI000012,OF019,2026-04-10,Tienda,rechazada,precio,False,contactado,audio_llamada,postpago,176,False,False,Paquete Roaming Internacional,paquete_adicional,False
+OFR0000036,CLI000013,OF022,2026-03-10,Digital,aceptada,,False,contactado,registro_plataforma,postpago,133,True,False,Movistar Total Max,movistar_total,True
+OFR0000037,CLI000013,OF001,2026-06-10,Digital,rechazada,otro,False,contactado,registro_plataforma,postpago,133,True,False,Plan Movil Basico 10GB,plan_movil,False
+OFR0000038,CLI000013,OF022,2026-04-10,Digital,aceptada,,False,contactado,registro_plataforma,postpago,133,True,False,Movistar Total Max,movistar_total,True
+OFR0000039,CLI000013,OF022,2026-05-10,Tienda,pendiente,,False,no_contactado,audio_llamada,postpago,133,True,False,Movistar Total Max,movistar_total,True
+OFR0000040,CLI000014,OF016,2026-04-10,Call In,aceptada,,False,contactado,registro_plataforma,prepago,138,False,False,Router WiFi 6,equipo,False
+OFR0000041,CLI000014,OF015,2026-02-10,Digital,rechazada,ya_tiene_similar,False,contactado,chat_log,prepago,138,False,False,Equipo Smartphone Gama Alta,equipo,False
+OFR0000042,CLI000014,OF017,2026-01-10,Tienda,pendiente,,False,no_contactado,audio_llamada,prepago,138,False,False,Paquete Streaming Video,paquete_adicional,False
+OFR0000043,CLI000014,OF011,2026-02-10,Call In,pendiente,,False,no_contactado,chat_log,prepago,138,False,False,Upgrade a Plan Plus,upgrade,False
+OFR0000044,CLI000015,OF015,2026-02-10,Digital,rechazada,precio,False,contactado,chat_log,,130,False,False,Equipo Smartphone Gama Alta,equipo,False
+OFR0000045,CLI000015,OF001,2026-06-10,Call Out,aceptada,,False,contactado,chat_log,,130,False,False,Plan Movil Basico 10GB,plan_movil,False
+OFR0000046,CLI000015,OF002,2026-01-10,Digital,rechazada,ya_tiene_similar,True,contactado,registro_plataforma,,130,False,False,Plan Movil Plus 25GB,plan_movil,False
+OFR0000047,CLI000016,OF018,2026-03-10,Call Out,rechazada,precio,False,contactado,registro_plataforma,prepago,142,False,False,Paquete Seguridad Digital,paquete_adicional,False
+OFR0000048,CLI000016,OF007,2026-02-10,Tienda,aceptada,,False,contactado,registro_plataforma,prepago,142,False,False,TV Hogar Sola,plan_hogar,False
+OFR0000049,CLI000017,OF019,2026-04-10,Tienda,aceptada,,False,contactado,chat_log,prepago,93,False,False,Paquete Roaming Internacional,paquete_adicional,False
+OFR0000050,CLI000017,OF017,2026-01-10,Tienda,aceptada,,False,contactado,registro_plataforma,prepago,93,False,False,Paquete Streaming Video,paquete_adicional,False
+OFR0000051,CLI000018,OF016,2026-02-10,Call In,aceptada,,False,contactado,audio_llamada,postpago,24,False,True,Router WiFi 6,equipo,False
+OFR0000052,CLI000018,OF014,2026-01-10,Tienda,pendiente,,False,no_contactado,audio_llamada,postpago,24,False,True,Equipo Smartphone Gama Media,equipo,False
+OFR0000053,CLI000019,OF019,2026-01-10,Tienda,aceptada,,False,contactado,registro_plataforma,prepago,152,False,False,Paquete Roaming Internacional,paquete_adicional,False
+OFR0000054,CLI000019,OF018,2026-01-10,Call In,rechazada,no_confia,False,contactado,chat_log,prepago,152,False,False,Paquete Seguridad Digital,paquete_adicional,False
+OFR0000055,CLI000020,OF016,2026-01-10,Tienda,rechazada,precio,False,contactado,registro_plataforma,postpago,82,False,False,Router WiFi 6,equipo,False
+OFR0000056,CLI000020,OF018,2026-04-10,Call Out,rechazada,mal_momento,False,contactado,registro_plataforma,postpago,82,False,False,Paquete Seguridad Digital,paquete_adicional,False
+OFR0000057,CLI000020,OF011,2026-01-10,Call In,pendiente,,False,no_contactado,audio_llamada,postpago,82,False,False,Upgrade a Plan Plus,upgrade,False
+OFR0000058,CLI000021,OF012,2026-02-10,Tienda,aceptada,,False,contactado,chat_log,postpago,91,False,False,Upgrade a Plan Max,upgrade,False
+OFR0000059,CLI000021,OF015,2026-03-10,Digital,aceptada,,False,contactado,chat_log,postpago,91,False,False,Equipo Smartphone Gama Alta,equipo,False
+OFR0000117,CLI000041,OF002,2026-01-10,Digital,pendiente,,False,no_contactado,registro_plataforma,postpago,30,True,False,Plan Movil Plus 25GB,plan_movil,False
+OFR0000118,CLI000041,OF021,2026-01-10,Tienda,aceptada,,False,contactado,registro_plataforma,postpago,30,True,False,Movistar Total Plus,movistar_total,True
+OFR0000129,CLI000048,OF022,2026-03-10,Digital,aceptada,,False,contactado,registro_plataforma,postpago,161,True,False,Movistar Total Max,movistar_total,True
+OFR0000130,CLI000048,OF022,2026-06-10,Tienda,pendiente,,False,no_contactado,registro_plataforma,postpago,161,True,False,Movistar Total Max,movistar_total,True
+OFR0000131,CLI000048,OF004,2026-02-10,Tienda,rechazada,no_confia,False,contactado,registro_plataforma,postpago,161,True,False,Plan Movil Ilimitado,plan_movil,False
+OFR0000146,CLI000053,OF014,2026-01-10,Tienda,rechazada,precio,False,contactado,registro_plataforma,postpago,66,True,False,Equipo Smartphone Gama Media,equipo,False
+OFR0000147,CLI000053,OF020,2026-03-10,Tienda,aceptada,,False,contactado,registro_plataforma,postpago,66,True,False,Movistar Total Basico,movistar_total,True
+OFR0000148,CLI000053,OF011,2026-06-10,Digital,rechazada,no_necesita,True,contactado,registro_plataforma,postpago,66,True,False,Upgrade a Plan Plus,upgrade,False
+OFR0000167,CLI000060,OF021,2026-02-10,Tienda,aceptada,,False,contactado,registro_plataforma,postpago,123,True,False,Movistar Total Plus,movistar_total,True
+OFR0000203,CLI000073,OF017,2026-06-10,Tienda,rechazada,no_necesita,False,contactado,registro_plataforma,postpago,84,True,False,Paquete Streaming Video,paquete_adicional,False
+OFR0000204,CLI000073,OF017,2026-04-10,Call Out,rechazada,no_confia,False,contactado,audio_llamada,postpago,84,True,False,Paquete Streaming Video,paquete_adicional,False
+OFR0000205,CLI000073,OF021,2026-03-10,Digital,aceptada,,False,contactado,audio_llamada,postpago,84,True,False,Movistar Total Plus,movistar_total,True
+OFR0000206,CLI000073,OF022,2026-06-10,Call Out,rechazada,precio,False,contactado,audio_llamada,postpago,84,True,False,Movistar Total Max,movistar_total,True
+OFR0000207,CLI000073,OF022,2026-01-10,Tienda,aceptada,,False,contactado,audio_llamada,postpago,84,True,False,Movistar Total Max,movistar_total,True
+OFR0000234,CLI000084,OF020,2026-01-10,Digital,aceptada,,False,contactado,registro_plataforma,postpago,150,True,False,Movistar Total Basico,movistar_total,True
+OFR0000235,CLI000084,OF010,2026-01-10,Call Out,aceptada,,False,contactado,registro_plataforma,postpago,150,True,False,Internet + TV + Fijo Hogar,plan_hogar,False
+OFR0000236,CLI000084,OF021,2026-01-10,Tienda,aceptada,,False,contactado,registro_plataforma,postpago,150,True,False,Movistar Total Plus,movistar_total,True
+OFR0000237,CLI000084,OF021,2026-04-10,Call Out,aceptada,,False,contactado,registro_plataforma,postpago,150,True,False,Movistar Total Plus,movistar_total,True
+OFR0000265,CLI000094,OF020,2026-04-10,Tienda,aceptada,,False,contactado,registro_plataforma,postpago,70,True,False,Movistar Total Basico,movistar_total,True
+OFR0000316,CLI000115,OF020,2026-03-10,Call Out,rechazada,no_necesita,True,contactado,chat_log,postpago,92,True,False,Movistar Total Basico,movistar_total,True
+OFR0000317,CLI000115,OF005,2026-02-10,Call In,aceptada,,False,contactado,audio_llamada,postpago,92,True,False,Internet Hogar 100Mb,plan_hogar,False
+OFR0000318,CLI000115,OF021,2026-04-10,Digital,aceptada,,False,contactado,registro_plataforma,postpago,92,True,False,Movistar Total Plus,movistar_total,True
+OFR0000319,CLI000115,OF021,2026-05-10,Digital,aceptada,,False,contactado,registro_plataforma,postpago,92,True,False,Movistar Total Plus,movistar_total,True
+OFR0000369,CLI000135,OF004,2026-03-10,Digital,rechazada,no_necesita,False,contactado,registro_plataforma,postpago,144,True,False,Plan Movil Ilimitado,plan_movil,False
+OFR0000370,CLI000135,OF021,2026-04-10,Digital,aceptada,,False,contactado,chat_log,postpago,144,True,False,Movistar Total Plus,movistar_total,True
+OFR0000371,CLI000135,OF021,2026-02-10,Tienda,aceptada,,False,contactado,audio_llamada,postpago,144,True,False,Movistar Total Plus,movistar_total,True
