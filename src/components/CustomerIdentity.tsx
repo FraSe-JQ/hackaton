@@ -40,7 +40,7 @@ export function CustomerIdentity({
       )}
 
       <div className={`flex items-center gap-2.5 rounded-card border border-line bg-surface p-3 ${locked ? '' : 'mt-3'}`}>
-        <div className="grid h-9 w-9 flex-none place-items-center rounded-control bg-soft text-green-dark">
+        <div className="grid h-9 w-9 flex-none place-items-center rounded-control bg-cyan-soft text-brand">
           <UserRound size={18} />
         </div>
         <div className="min-w-0 flex-1">
@@ -51,7 +51,7 @@ export function CustomerIdentity({
           <button
             type="button"
             onClick={() => setConfirming(true)}
-            className="flex-none text-xs font-medium text-muted underline-offset-2 hover:text-green-dark hover:underline"
+            className="flex-none text-xs font-medium text-muted underline-offset-2 hover:text-brand-dark hover:underline"
           >
             Cambiar
           </button>
@@ -59,16 +59,16 @@ export function CustomerIdentity({
       </div>
 
       {locked && !unlocked && confirming && (
-        <div className="mt-2 rounded-card border border-amber/40 bg-amber/5 p-3">
+        <div className="mt-2 rounded-card border border-cyan/40 bg-cyan-soft p-3">
           <p className="flex gap-1.5 text-xs leading-snug text-ink">
-            <Lock size={13} className="mt-0.5 flex-none text-amber" />
+            <Lock size={13} className="mt-0.5 flex-none text-brand" />
             Cambiar de cliente reinicia la llamada en curso y borra el avance registrado.
           </p>
           <div className="mt-2 flex gap-2">
             <button
               type="button"
               onClick={() => { setUnlocked(true); setConfirming(false) }}
-              className="h-8 flex-1 rounded-control border border-amber/50 bg-surface text-xs font-medium text-amber"
+              className="h-8 flex-1 rounded-control border border-brand bg-surface text-xs font-medium text-brand-dark"
             >
               Sí, cambiar
             </button>
@@ -139,7 +139,7 @@ export function CustomerIdentity({
             <ServiceTag active={customer.services.internet}>Internet</ServiceTag>
           </div>
         </div>
-        <span className={`whitespace-nowrap rounded-full border px-2 py-1 text-[11px] font-medium ${customer.eligibleMt ? 'border-green/50 bg-green/15 text-green-dark' : 'border-line bg-canvas text-muted'}`}>
+        <span className={`whitespace-nowrap rounded-full border px-2 py-1 text-[11px] font-medium ${customer.eligibleMt ? 'border-success/50 bg-success-soft text-success' : 'border-line bg-canvas text-muted'}`}>
           {customer.eligibleMt ? 'Elegible MT' : 'No elegible MT'}
         </span>
       </div>
@@ -159,7 +159,7 @@ function DenseStat({ label, value }: { label: string; value: string }) {
 function PlanStat({ customer, dense = false }: { customer: CustomerView; dense?: boolean }) {
   return (
     <div tabIndex={0} className={`group relative z-[1200] outline-none hover:z-[1300] focus-visible:z-[1300] ${dense ? 'flex items-center justify-between gap-3 px-2.5 py-1.5' : 'border border-line bg-surface p-2.5'}`}>
-      <span className={dense ? 'flex-none text-muted' : 'block text-xs text-muted'}>Plan actual <span className="ml-0.5 text-[10px] text-blue">ⓘ</span></span>
+      <span className={dense ? 'flex-none text-muted' : 'block text-xs text-muted'}>Plan actual <span className="ml-0.5 text-[10px] text-cyan">ⓘ</span></span>
       <strong className={dense ? 'min-w-0 truncate font-medium text-ink' : 'mt-1 block truncate text-sm font-medium text-ink'}>{customer.currentPlanName}</strong>
       <div className="pointer-events-none invisible absolute left-0 top-full z-[99999] mt-2 w-64 -translate-y-1 rounded-card border border-line bg-surface p-3 text-ink opacity-0 shadow-2xl transition-all duration-150 group-hover:visible group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:visible group-focus-visible:pointer-events-auto group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
         <span className="block text-[10px] font-medium uppercase tracking-wide text-muted">Detalle del plan</span>
@@ -178,7 +178,7 @@ function PlanStat({ customer, dense = false }: { customer: CustomerView; dense?:
 
 function ServiceTag({ active, children }: { active: boolean; children: React.ReactNode }) {
   return (
-    <span className={`rounded-control px-1.5 py-1 text-xs ${active ? 'bg-soft font-medium text-green-dark' : 'bg-canvas text-muted'}`}>
+    <span className={`rounded-control px-1.5 py-1 text-xs ${active ? 'bg-success-soft font-medium text-success' : 'bg-canvas text-muted'}`}>
       {children}
     </span>
   )

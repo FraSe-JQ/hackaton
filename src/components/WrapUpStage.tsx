@@ -42,7 +42,7 @@ export function WrapUpStage({
         <header className="flex items-center gap-3">
           <span
             className={`grid h-10 w-10 flex-none place-items-center rounded-full ${
-              accepted ? 'bg-green/10 text-green-dark' : attempts.length ? 'bg-red/10 text-red' : 'bg-soft text-muted'
+              accepted ? 'bg-success-soft text-success' : attempts.length ? 'bg-danger-soft text-danger' : 'bg-canvas text-muted'
             }`}
           >
             {accepted ? <Check size={20} /> : attempts.length ? <X size={20} /> : <CircleAlert size={20} />}
@@ -73,8 +73,8 @@ export function WrapUpStage({
         </section>
 
         {unregistered && (
-          <p className="mt-2 flex items-start gap-2 rounded-card border border-amber/40 bg-amber/5 p-3 text-xs leading-snug text-ink">
-            <CircleAlert size={14} className="mt-0.5 flex-none text-amber" />
+          <p className="mt-2 flex items-start gap-2 rounded-card border border-danger/40 bg-danger-soft p-3 text-xs leading-snug text-ink">
+            <CircleAlert size={14} className="mt-0.5 flex-none text-danger" />
             Se presentó <strong className="font-medium">{presentedOffer?.name}</strong> y se finalizó sin registrar la respuesta. Ese ofrecimiento no quedó en el historial.
           </p>
         )}
@@ -106,7 +106,7 @@ export function WrapUpStage({
             type="button"
             onClick={onFinish}
             disabled={!canFinish}
-            className="inline-flex h-10 flex-none items-center gap-2 rounded-control bg-green px-5 text-sm font-medium text-white transition-colors hover:bg-[#087b4b] disabled:cursor-not-allowed disabled:bg-line disabled:text-muted"
+            className="inline-flex h-10 flex-none items-center gap-2 rounded-control bg-brand px-5 text-sm font-medium text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-line disabled:text-muted"
           >
             <RotateCcw size={15} /> Volver al inicio
           </button>
@@ -131,7 +131,7 @@ function AttemptRow({ attempt }: { attempt: OfferAttempt }) {
           {attempt.hadObjection && (
             <>
               <span>·</span>
-              <span className="inline-flex items-center gap-1 text-amber">
+              <span className="inline-flex items-center gap-1 text-cyan">
                 <MessageCircleWarning size={11} /> con objeción
               </span>
             </>
@@ -139,7 +139,7 @@ function AttemptRow({ attempt }: { attempt: OfferAttempt }) {
           {reasonLabel && <><span>·</span>{reasonLabel}</>}
         </span>
       </div>
-      <span className={`flex-none rounded-control px-2 py-1 text-xs font-medium ${rejected ? 'bg-red/10 text-red' : 'bg-green/10 text-green-dark'}`}>
+      <span className={`flex-none rounded-control px-2 py-1 text-xs font-medium ${rejected ? 'bg-danger-soft text-danger' : 'bg-success-soft text-success'}`}>
         {rejected ? 'Rechazada' : 'Aceptada'}
       </span>
     </li>

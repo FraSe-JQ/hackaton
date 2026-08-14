@@ -3,6 +3,7 @@ import { CircleAlert, RefreshCw } from 'lucide-react'
 import type { CampaignHistory } from './types'
 import { useDemoData } from './hooks/useDemoData'
 import { TopBar } from './components/TopBar'
+import { MovistarBadge } from './components/MovistarLogo'
 import { ContextRail } from './components/ContextRail'
 import { IdleStage } from './components/IdleStage'
 import { CallStage } from './components/CallStage'
@@ -103,16 +104,16 @@ function App() {
 
   if (loading) {
     return <div className="grid min-h-dvh place-content-center justify-items-center gap-2 text-muted">
-      <div className="grid h-12 w-12 place-items-center rounded-lg rounded-bl-sm bg-green text-xl font-medium text-white">M</div>
+      <MovistarBadge size={64} className="animate-pulse" />
       <p className="font-medium text-ink">Preparando la vista comercial…</p>
     </div>
   }
   if (error || !customer) {
     return <div className="grid min-h-dvh place-content-center justify-items-center gap-2 text-center text-muted">
-      <CircleAlert size={28} />
+      <CircleAlert size={28} className="text-danger" />
       <h1 className="text-lg font-medium text-ink">No pudimos cargar la demo</h1>
       <p>{error || 'No hay clientes disponibles.'}</p>
-      <button className="mt-2 inline-flex h-9 items-center gap-2 rounded-control bg-green px-3 text-sm font-medium text-white" onClick={() => window.location.reload()}>
+      <button className="mt-2 inline-flex h-9 items-center gap-2 rounded-control bg-brand px-3 text-sm font-medium text-white" onClick={() => window.location.reload()}>
         <RefreshCw size={16} /> Reintentar
       </button>
     </div>

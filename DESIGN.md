@@ -10,20 +10,28 @@
 
 **FIRST VIEWPORT:** topbar compacto, funnel de 5 pasos, riel de contexto de ~260px y columna principal con la oferta héroe a 2x el peso visual de las alternativas. En escritorio 1440×900/1280×720 la oferta héroe es lo primero que se lee tras el funnel.
 
-**FORM:** herramienta operativa B2B de una sola pantalla. Superficies planas: sin gradientes, sin sombras decorativas, sin glow. Un solo acento por vista — solo el héroe lleva borde/fondo acentuado (`border-2 border-green bg-soft`); todo lo demás es neutro.
+**FORM:** herramienta operativa B2B de una sola pantalla. Superficies planas: sin gradientes, sin sombras decorativas, sin glow. Un solo acento por vista — solo el héroe lleva borde/fondo acentuado (`border-success bg-success-soft`); todo lo demás es neutro.
 
 ## Tokens (`tailwind.config.js`)
 
-Colores:
-- `ink` `#14241f` — texto principal
-- `muted` `#5c7168` — texto secundario (oscurecido respecto al original `#687973` para cumplir AA sobre `soft`/`canvas`)
-- `line` `#dfe8e3` — bordes hairline
-- `surface` `#ffffff` — superficie de card
-- `soft` `#eff5f1` — superficie de acento suave (única superficie con tinte, reservada al héroe y bloques de apoyo)
-- `canvas` `#f4f7f5` — fondo de página
-- `green` / `green-dark` `#0a8f58` / `#063f35` — acento Movistar y topbar
-- `blue` `#2f73d9` — acento NBO / turno del asesor en transcripción
-- `amber` `#8a5412`, `red` `#a83c3c` — estados de alerta/rechazo, oscurecidos para contraste AA sobre fondos claros
+Colores (paleta de marca Movistar). Jerarquía: **azul → celeste → blanco → verde funcional → rojo funcional**.
+
+- `brand` `#009BF4` — azul Movistar: botones, CTAs, títulos activos, enlaces
+- `brand-dark` `#0072CE` — azul intenso: cabecera, elementos principales, énfasis
+- `cyan` `#00A9E0` — celeste intenso: íconos, estados IA, elementos destacados
+- `cyan-soft` `#E8F4FC` — celeste: fondos suaves, badges, tarjetas informativas
+- `success` `#78BE20` — verde funcional: "Elegible", disponibilidad, indicadores de estado positivo
+- `success-soft` `#EAF6E1` — verde claro: éxito, elegibilidad, ahorro, recomendación positiva
+- `danger` `#E51B23` — rojo intenso: "Rechazada", errores, alertas críticas
+- `danger-soft` `#FDE8EC` — rojo claro: fondo de rechazo/error
+- `ink` `#123B66` — azul texto: textos principales
+- `muted` `#5B7896` — texto secundario (derivado de `ink`, contraste AA sobre `surface`/`canvas`)
+- `line` `#D9E2EA` — bordes y divisores
+- `surface` `#FFFFFF` — cards, modales, áreas principales
+- `soft` `#E8F4FC` — superficie de acento suave (alias de `cyan-soft`)
+- `canvas` `#F5F7F9` — fondo general de página
+
+Reglas de uso: el azul es identidad y navegación; el celeste marca todo lo que es IA, información o estado del sistema; el verde se usa **únicamente** para "todo está bien / elegible / ahorro"; el rojo **únicamente** para rechazo, error o alerta. El blanco aporta el espacio.
 
 Escala tipográfica explícita (`theme.fontSize`): `xs 12px / sm 13px / base 15px / lg 18px / xl 22px / 2xl 32px`. El único texto en `2xl` es la probabilidad estimada del héroe — todo lo demás baja de tamaño para dejarla respirar. Dos pesos: `regular` y `medium` (`font-medium`); no se usa `font-bold`/`700` en ningún componente.
 

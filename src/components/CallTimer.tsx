@@ -23,11 +23,11 @@ export function CallTimer({ startedAt, endedAt }: { startedAt: number; endedAt: 
   return (
     <div
       className={`flex flex-none items-center gap-2 rounded-card border px-3 py-2 ${
-        running ? 'border-green/40 bg-green/5' : 'border-line bg-surface'
+        running ? 'border-brand/40 bg-cyan-soft' : 'border-line bg-surface'
       }`}
       aria-label="Duración de la llamada"
     >
-      <span className={`grid h-6 w-6 flex-none place-items-center rounded-control ${running ? 'bg-green/10 text-green-dark' : 'bg-soft text-muted'}`}>
+      <span className={`grid h-6 w-6 flex-none place-items-center rounded-control ${running ? 'bg-brand text-white' : 'bg-canvas text-muted'}`}>
         {running ? <PhoneCall size={13} /> : <PhoneOff size={13} />}
       </span>
       <div className="min-w-0">
@@ -36,7 +36,7 @@ export function CallTimer({ startedAt, endedAt }: { startedAt: number; endedAt: 
           {formatElapsed(elapsed)}
         </strong>
       </div>
-      {running && <span className="ml-auto h-1.5 w-1.5 flex-none animate-pulse rounded-full bg-green" />}
+      {running && <span className="ml-auto h-1.5 w-1.5 flex-none animate-pulse rounded-full bg-success" />}
     </div>
   )
 }

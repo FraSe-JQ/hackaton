@@ -34,7 +34,7 @@ export function ContextRail({
   const inCall = isInCall(phase)
 
   return (
-    <aside className="relative z-[1000] order-2 flex min-h-0 w-full flex-col gap-3 overflow-y-auto border-line bg-[#F7FBFC] p-4 md:order-1 md:w-[270px] md:flex-none md:overflow-visible md:border-r">
+    <aside className="relative z-[1000] order-2 flex min-h-0 w-full flex-col gap-3 overflow-y-auto border-line bg-surface p-4 md:order-1 md:w-[270px] md:flex-none md:overflow-visible md:border-r">
       {inCall && startedAt !== null && <CallTimer startedAt={startedAt} endedAt={endedAt} />}
 
       <CustomerIdentity
