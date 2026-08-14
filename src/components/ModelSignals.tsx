@@ -4,7 +4,7 @@ import type { ModelSignal } from '../lib/viewModel'
 export function ModelSignals({ signals, sticky = false }: { signals: ModelSignal[]; sticky?: boolean }) {
   if (!signals.length) return null
   return (
-    <div className={`border-t border-line pt-3 ${sticky ? 'sticky top-0 z-10 -mx-4 border-b bg-[#f8faf9] px-4 pb-3' : ''}`}>
+    <div className={`border-t border-line pt-3 ${sticky ? 'sticky top-0 z-10 -mx-4 border-b bg-[#F7FBFC] px-4 pb-3' : ''}`}>
       <span className="block text-xs font-medium text-muted">Señales del modelo</span>
       <ul className="mt-2.5 flex flex-col gap-2">
         {signals.map((signal, index) => (

@@ -3,15 +3,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#14241f',
-        muted: '#5c7168',
-        line: '#dfe8e3',
+        ink: '#00517A',
+        muted: '#557783',
+        line: '#D3E1E4',
         surface: '#ffffff',
-        soft: '#eff5f1',
-        canvas: '#f4f7f5',
-        green: { DEFAULT: '#0a8f58', dark: '#063f35' },
-        blue: '#2f73d9',
-        amber: '#8a5412',
+        soft: '#DDE8EA',
+        canvas: '#DDE8EA',
+        green: { DEFAULT: '#8DC63F', dark: '#00517A' },
+        blue: '#51C6D9',
+        amber: '#8DC63F',
         red: '#a83c3c',
       },
       fontSize: {

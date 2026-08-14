@@ -3,7 +3,6 @@ import { CircleAlert, RefreshCw } from 'lucide-react'
 import type { CampaignHistory } from './types'
 import { useDemoData } from './hooks/useDemoData'
 import { TopBar } from './components/TopBar'
-import { FunnelBar } from './components/FunnelBar'
 import { ContextRail } from './components/ContextRail'
 import { IdleStage } from './components/IdleStage'
 import { CallStage } from './components/CallStage'
@@ -12,11 +11,13 @@ import {
   attemptToHistory, callReducer, canConfirmOutcome, exhaustedOfferIds, hasUnregisteredOffer, initialSession, isInCall,
 } from './lib/callMachine'
 import {
-  buildCustomerView, buildFunnelSteps, buildHistoryView, buildIdlePrep, buildLiveSuggestions, buildOfferStackView,
+  buildCustomerView, buildHistoryView, buildIdlePrep, buildLiveSuggestions, buildOfferStackView,
   buildTranscript,
 } from './lib/viewModel'
 
-const TRANSCRIPT_TICK_MS = 1600
+// Demo automatizada: el guion completo dura aproximadamente 24 segundos.
+const TRANSCRIPT_TICK_MS = 2300
+const AUTOMATION_STEP_MS = 1100
 
 function App() {
   const { customers, offers, history, loading, error } = useDemoData()
@@ -25,6 +26,7 @@ function App() {
   const [session, dispatch] = useReducer(callReducer, initialSession)
   /** Ofrecimientos registrados en esta demo: se suman al historial del cliente. */
   const [sessionLog, setSessionLog] = useState<CampaignHistory[]>([])
+  const [automationEnabled, setAutomationEnabled] = useState(true)
 
   useEffect(() => { if (!selectedId && customers.length) setSelectedId(customers[0].cliente_id) }, [customers, selectedId])
   useEffect(() => { dispatch({ type: 'reset' }) }, [selectedId])
@@ -48,15 +50,56 @@ function App() {
   )
 
   useEffect(() => {
-    if (!isInCall(session.phase) || session.visibleLines >= transcript.length) return
+    if (!automationEnabled || !isInCall(session.phase) || session.visibleLines >= transcript.length) return
     const timer = window.setTimeout(() => dispatch({ type: 'advanceTranscript' }), TRANSCRIPT_TICK_MS)
     return () => window.clearTimeout(timer)
-  }, [session.phase, session.visibleLines, transcript.length])
+  }, [automationEnabled, session.phase, session.visibleLines, transcript.length])
 
   const filteredCustomers = useMemo(() => customers.filter((item) => {
     const text = `${item.cliente_id} ${item.tipo_cliente} ${item.ubicacion_departamento}`.toLowerCase()
     return text.includes(query.toLowerCase())
   }), [customers, query])
+
+  const confirmOutcome = (andContinue = false) => {
+    if (!customer) return
+    const { presentedOffer, pendingOutcome, rejectionReason, hadObjection } = session
+    if (!canConfirmOutcome(session) || !presentedOffer || !pendingOutcome) return
+    const at = Date.now()
+    dispatch({ type: 'confirmOutcome', at, andContinue })
+    setSessionLog((current) => [
+      ...current,
+      attemptToHistory(customer, {
+        offer: presentedOffer,
+        result: pendingOutcome,
+        reason: pendingOutcome === 'rejected' ? rejectionReason : null,
+        hadObjection,
+        at,
+      }),
+    ])
+  }
+
+  useEffect(() => {
+    if (!automationEnabled || !customer || !offerStack.hero || !isInCall(session.phase)) return
+    const lastSegment = session.segments[session.segments.length - 1]?.key
+    if (session.visibleLines < transcript.length) return
+
+    let timer: number | undefined
+    if (session.phase === 'active' && lastSegment === 'opening') {
+      timer = window.setTimeout(() => {
+        if (!session.selectedOfferId) dispatch({ type: 'selectOffer', offerId: offerStack.hero!.id })
+        else dispatch({ type: 'present', offer: offerStack.hero! })
+      }, AUTOMATION_STEP_MS)
+    } else if (session.phase === 'presented' && lastSegment === 'present' && session.pendingOutcome === null) {
+      timer = window.setTimeout(() => dispatch({ type: 'raiseObjection' }), AUTOMATION_STEP_MS)
+    } else if (session.phase === 'objection' && lastSegment === 'objection') {
+      timer = window.setTimeout(() => dispatch({ type: 'handleObjection' }), AUTOMATION_STEP_MS)
+    } else if (session.phase === 'presented' && lastSegment === 'objection' && session.pendingOutcome === null) {
+      timer = window.setTimeout(() => dispatch({ type: 'setPendingOutcome', result: 'accepted' }), AUTOMATION_STEP_MS)
+    } else if (session.phase === 'presented' && session.pendingOutcome === 'accepted') {
+      timer = window.setTimeout(() => { confirmOutcome(false) }, AUTOMATION_STEP_MS)
+    }
+    return () => { if (timer) window.clearTimeout(timer) }
+  }, [automationEnabled, customer, offerStack.hero, session.phase, session.segments, session.visibleLines, session.selectedOfferId, session.pendingOutcome, transcript.length])
 
   if (loading) {
     return <div className="grid min-h-dvh place-content-center justify-items-center gap-2 text-muted">
@@ -77,26 +120,7 @@ function App() {
 
   const customerView = buildCustomerView(customer, offers)
   const historyView = buildHistoryView(customer.cliente_id, fullHistory)
-  const funnelSteps = buildFunnelSteps(session)
   const idlePrep = buildIdlePrep(customer, offerStack.hero)
-
-  // El intento se persiste en el historial con los mismos datos que guarda el reducer.
-  const confirmOutcome = (andContinue = false) => {
-    const { presentedOffer, pendingOutcome, rejectionReason, hadObjection } = session
-    if (!canConfirmOutcome(session) || !presentedOffer || !pendingOutcome) return
-    const at = Date.now()
-    dispatch({ type: 'confirmOutcome', at, andContinue })
-    setSessionLog((current) => [
-      ...current,
-      attemptToHistory(customer, {
-        offer: presentedOffer,
-        result: pendingOutcome,
-        reason: pendingOutcome === 'rejected' ? rejectionReason : null,
-        hadObjection,
-        at,
-      }),
-    ])
-  }
 
   return (
     <div className="flex min-h-dvh flex-col md:h-dvh md:overflow-hidden">
@@ -105,11 +129,10 @@ function App() {
         phase={session.phase}
         canEndCall={isInCall(session.phase)}
         needsConfirmToEnd={hasUnregisteredOffer(session)}
+        automationEnabled={automationEnabled}
+        onToggleAutomation={() => setAutomationEnabled((current) => !current)}
         onEndCall={() => dispatch({ type: 'endCall', at: Date.now() })}
       />
-      {/* El funnel sólo tiene sentido mientras hay una llamada: en idle es ruido. */}
-      {isInCall(session.phase) && <FunnelBar steps={funnelSteps} />}
-
       <main className="flex min-h-0 flex-1 flex-col md:flex-row md:overflow-hidden">
         <ContextRail
           customer={customerView}
@@ -130,7 +153,7 @@ function App() {
             <IdleStage
               prep={idlePrep}
               offers={offerStack.all}
-              onStartCall={() => dispatch({ type: 'start', at: Date.now() })}
+              onStartCall={() => { setAutomationEnabled(true); dispatch({ type: 'start', at: Date.now() }) }}
             />
           )}
 

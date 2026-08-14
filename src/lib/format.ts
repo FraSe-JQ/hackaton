@@ -24,10 +24,12 @@ export function formatGb(value: number): string {
 }
 
 export function formatTenure(months: number): string {
-  if (months < 12) return `${months} meses`
+  if (months < 12) return `${months} ${months === 1 ? 'mes' : 'meses'}`
   const years = Math.floor(months / 12)
   const rest = months % 12
-  return rest === 0 ? `${years} ${years === 1 ? 'año' : 'años'}` : `${years} a. ${rest} m.`
+  const yearLabel = years === 1 ? `a${String.fromCharCode(241)}o` : `a${String.fromCharCode(241)}os`
+  if (rest === 0) return `${years} ${yearLabel}`
+  return `${years} ${yearLabel}, ${rest} ${rest === 1 ? 'mes' : 'meses'}`
 }
 
 const REJECTION_REASON_LABELS: Record<string, string> = {

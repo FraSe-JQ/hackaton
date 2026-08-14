@@ -115,16 +115,16 @@ export function CustomerIdentity({
       )}
 
       {dense ? (
-        <dl className="mt-3 divide-y divide-line overflow-hidden rounded-card border border-line bg-surface text-xs">
+        <dl className="relative z-[1100] mt-3 divide-y divide-line overflow-visible rounded-card border border-line bg-surface text-xs">
           <DenseStat label="Antigüedad" value={customer.tenureLabel} />
-          <DenseStat label="Plan actual" value={customer.currentPlanName} />
+          <PlanStat customer={customer} dense />
           <DenseStat label="Facturación" value={customer.billingAvgLabel} />
           <DenseStat label="Canal" value={customer.preferredChannel} />
         </dl>
       ) : (
-        <div className="mt-3 grid grid-cols-2 gap-px overflow-hidden rounded-card border border-line bg-line">
+        <div className="relative z-[1100] mt-3 grid grid-cols-2 gap-px overflow-visible rounded-card border border-line bg-line">
           <Stat label="Antigüedad" value={customer.tenureLabel} />
-          <Stat label="Plan actual" value={customer.currentPlanName} hint={customer.currentPlanId} />
+          <PlanStat customer={customer} />
           <Stat label="Facturación prom." value={customer.billingAvgLabel} />
           <Stat label="Canal más usado" value={customer.preferredChannel} />
         </div>
@@ -139,7 +139,7 @@ export function CustomerIdentity({
             <ServiceTag active={customer.services.internet}>Internet</ServiceTag>
           </div>
         </div>
-        <span className={`whitespace-nowrap text-xs ${customer.eligibleMt ? 'text-green-dark' : 'text-muted'}`}>
+        <span className={`whitespace-nowrap rounded-full border px-2 py-1 text-[11px] font-medium ${customer.eligibleMt ? 'border-green/50 bg-green/15 text-green-dark' : 'border-line bg-canvas text-muted'}`}>
           {customer.eligibleMt ? 'Elegible MT' : 'No elegible MT'}
         </span>
       </div>
@@ -152,6 +152,26 @@ function DenseStat({ label, value }: { label: string; value: string }) {
     <div className="flex items-center justify-between gap-3 px-2.5 py-1.5">
       <dt className="flex-none text-muted">{label}</dt>
       <dd className="min-w-0 truncate font-medium text-ink" title={value}>{value}</dd>
+    </div>
+  )
+}
+
+function PlanStat({ customer, dense = false }: { customer: CustomerView; dense?: boolean }) {
+  return (
+    <div tabIndex={0} className={`group relative z-[1200] outline-none hover:z-[1300] focus-visible:z-[1300] ${dense ? 'flex items-center justify-between gap-3 px-2.5 py-1.5' : 'border border-line bg-surface p-2.5'}`}>
+      <span className={dense ? 'flex-none text-muted' : 'block text-xs text-muted'}>Plan actual <span className="ml-0.5 text-[10px] text-blue">ⓘ</span></span>
+      <strong className={dense ? 'min-w-0 truncate font-medium text-ink' : 'mt-1 block truncate text-sm font-medium text-ink'}>{customer.currentPlanName}</strong>
+      <div className="pointer-events-none invisible absolute left-0 top-full z-[99999] mt-2 w-64 -translate-y-1 rounded-card border border-line bg-surface p-3 text-ink opacity-0 shadow-2xl transition-all duration-150 group-hover:visible group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:visible group-focus-visible:pointer-events-auto group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+        <span className="block text-[10px] font-medium uppercase tracking-wide text-muted">Detalle del plan</span>
+        <strong className="mt-1 block text-sm font-medium text-ink">{customer.currentPlanName}</strong>
+        <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1.5 border-t border-line pt-2 text-xs">
+          <span className="text-muted">Costo</span><strong>{customer.currentPlanPrice} / mes</strong>
+          <span className="text-muted">Tipo</span><strong>{customer.currentPlanType}</strong>
+          <span className="text-muted">Segmento</span><strong>{customer.currentPlanSegment}</strong>
+          <span className="text-muted">Datos</span><strong>{customer.currentPlanGb}</strong>
+        </div>
+        <p className="mt-2 border-t border-line pt-2 text-xs leading-snug text-muted">{customer.currentPlanDescription}</p>
+      </div>
     </div>
   )
 }

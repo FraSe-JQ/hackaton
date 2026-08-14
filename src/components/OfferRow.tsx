@@ -1,36 +1,40 @@
-import { Sparkles } from 'lucide-react'
 import type { OfferSummary } from '../lib/viewModel'
-import { RANK_LABEL } from './OfferTile'
 
 export function OfferRow({ offer }: { offer: OfferSummary }) {
+  const tone = offer.rank === 1
+    ? 'border-[#8DC63F] bg-[#EDF7DF]'
+    : offer.rank === 2
+      ? 'border-[#C4D99B] bg-[#F3F8E9]'
+      : 'border-line bg-[#F8FBF5]'
+
   return (
-    <li
-      className={`rounded-card border bg-surface p-3 ${offer.rank === 1 ? 'border-green' : 'border-line'}`}
-    >
-      <div className="flex items-center gap-2">
-        <span
-          className={`grid h-5 w-5 flex-none place-items-center rounded-full text-xs font-medium ${
-            offer.rank === 1 ? 'bg-green text-white' : 'bg-soft text-muted'
-          }`}
-        >
-          {offer.rank}
+    <li className={`flex h-full min-h-[255px] flex-col rounded-card border p-4 ${tone}`}>
+      <div className="flex items-center justify-between gap-2">
+        <span className="flex items-center gap-2">
+          <span className={`grid h-7 w-7 place-items-center rounded-full text-sm font-medium ${offer.rank === 1 ? 'bg-green text-green-dark' : 'bg-soft text-muted'}`}>
+            {offer.rank}
+          </span>
+          <span className="text-xs font-medium uppercase tracking-wide text-muted">{offer.rank === 1 ? 'Mejor opción' : 'Alternativa'}</span>
         </span>
-        <strong className="min-w-0 flex-1 truncate text-sm font-medium text-ink">{offer.name}</strong>
-        <strong className="flex-none text-sm font-medium text-green-dark">{offer.probability}%</strong>
+        <strong className="text-lg font-medium text-green-dark">{offer.probability}%</strong>
       </div>
 
-      <div className="mt-1.5 flex items-center gap-2 pl-7 text-xs">
-        <span className={offer.rank === 1 ? 'inline-flex items-center gap-1 font-medium text-green-dark' : 'text-muted'}>
-          {offer.rank === 1 && <Sparkles size={11} />}
-          {RANK_LABEL[offer.rank]}
-        </span>
-        <span className="text-muted">·</span>
-        <span className="text-ink">{offer.priceLabel}</span>
-        <span className="text-muted">·</span>
-        <span className="truncate text-muted">{offer.gbLabel}</span>
-      </div>
+      <strong className="mt-4 line-clamp-2 text-lg font-medium leading-tight text-ink">{offer.name}</strong>
+      <span className="mt-1.5 text-sm text-muted">{offer.typeLabel} · {offer.gbLabel}</span>
+      <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-muted">{offer.reason}</p>
 
-      <p className="mt-1.5 line-clamp-2 pl-7 text-xs leading-snug text-muted">{offer.reason}</p>
+      <div className="mt-auto grid grid-cols-2 items-end gap-2 border-t border-line/70 pt-3">
+        <div>
+          <span className="block text-xs uppercase tracking-wide text-muted">Costo mensual</span>
+          <strong className="mt-0.5 block text-base font-medium text-ink">{offer.priceLabel}</strong>
+        </div>
+        <div className="text-right">
+          <span className="block text-xs uppercase tracking-wide text-muted">Por qué ofrecerlo</span>
+          <strong className="mt-0.5 block line-clamp-2 text-sm font-medium leading-tight text-green-dark" title={offer.savingsLabel ?? offer.deltaLabel}>
+            {offer.savingsLabel ?? offer.deltaLabel}
+          </strong>
+        </div>
+      </div>
     </li>
   )
 }

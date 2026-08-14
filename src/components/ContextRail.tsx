@@ -1,6 +1,6 @@
 import type { Customer } from '../types'
 import type { CustomerView, HistoryEntryView, ModelSignal } from '../lib/viewModel'
-import type { CallPhase } from '../lib/callMachine'
+import { isInCall, type CallPhase } from '../lib/callMachine'
 import { CallTimer } from './CallTimer'
 import { CustomerIdentity } from './CustomerIdentity'
 import { ModelSignals } from './ModelSignals'
@@ -31,15 +31,11 @@ export function ContextRail({
   startedAt: number | null
   endedAt: number | null
 }) {
-  const inCall = phase !== 'idle'
+  const inCall = isInCall(phase)
 
   return (
-    <aside className="order-2 flex min-h-0 w-full flex-col gap-3 overflow-y-auto border-line bg-[#f8faf9] p-4 md:order-1 md:w-[270px] md:flex-none md:border-r">
+    <aside className="relative z-[1000] order-2 flex min-h-0 w-full flex-col gap-3 overflow-y-auto border-line bg-[#F7FBFC] p-4 md:order-1 md:w-[270px] md:flex-none md:overflow-visible md:border-r">
       {inCall && startedAt !== null && <CallTimer startedAt={startedAt} endedAt={endedAt} />}
-
-      {/* En llamada el historial sube al tope: es lo que el asesor necesita citar ante "ya me ofrecieron eso". */}
-      {inCall && <OfferHistory entries={history} defaultOpen />}
-      {inCall && <ModelSignals signals={signals} sticky />}
 
       <CustomerIdentity
         customer={customer}
@@ -52,6 +48,8 @@ export function ContextRail({
         dense={inCall}
       />
 
+      {inCall && <OfferHistory entries={history} defaultOpen />}
+      {inCall && <ModelSignals signals={signals} sticky />}
       {!inCall && <ModelSignals signals={signals} />}
       {!inCall && <OfferHistory entries={history} />}
     </aside>

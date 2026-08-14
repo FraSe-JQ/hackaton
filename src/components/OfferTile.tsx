@@ -24,12 +24,16 @@ export function OfferTile({
       onClick={onSelect}
       disabled={exhausted}
       aria-pressed={selected}
-      className={`flex h-full flex-col rounded-card border bg-surface p-3 text-left transition-colors ${
+      className={`flex h-full flex-col rounded-card border p-3 text-left transition-colors ${
         exhausted
-          ? 'cursor-not-allowed border-line opacity-55'
+          ? 'cursor-not-allowed border-line bg-soft opacity-55'
           : selected
             ? 'border-green ring-1 ring-green'
-            : 'border-line hover:border-green/50'
+            : offer.rank === 1
+              ? 'border-[#8DC63F] bg-[#EDF7DF] hover:border-green'
+              : offer.rank === 2
+                ? 'border-[#C4D99B] bg-[#F3F8E9] hover:border-[#8DC63F]'
+                : 'border-line bg-[#F8FBF5] hover:border-[#C4D99B]'
       }`}
     >
       <div className="flex items-center justify-between gap-2">
@@ -50,10 +54,7 @@ export function OfferTile({
       <strong className="mt-1.5 line-clamp-2 text-sm font-medium leading-tight text-ink">{offer.name}</strong>
 
       <div className="mt-auto flex items-end justify-between gap-2 pt-2">
-        <div className="min-w-0">
-          <strong className="block text-sm font-medium text-ink">{offer.priceLabel}</strong>
-          <span className={`block truncate text-xs ${offer.deltaTone === 'up' ? 'text-green-dark' : 'text-amber'}`}>{offer.deltaLabel}</span>
-        </div>
+        <strong className="block text-sm font-medium text-ink">{offer.priceLabel}</strong>
         <div className="flex-none text-right">
           <strong className="block text-base font-medium leading-none text-green-dark">{offer.probability}%</strong>
           <span className="block text-xs text-muted">prob.</span>

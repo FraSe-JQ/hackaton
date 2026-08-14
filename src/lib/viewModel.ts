@@ -29,6 +29,11 @@ export type CustomerView = {
   tenureLabel: string
   currentPlanName: string
   currentPlanId: string
+  currentPlanType: string
+  currentPlanPrice: string
+  currentPlanSegment: string
+  currentPlanGb: string
+  currentPlanDescription: string
   billingAvgLabel: string
   preferredChannel: string
   services: { mobile: boolean; home: boolean; internet: boolean }
@@ -96,6 +101,11 @@ export function buildCustomerView(customer: Customer, offers: Offer[]): Customer
     tenureLabel: formatTenure(customer.antiguedad_meses),
     currentPlanName: currentPlan?.nombre_oferta ?? 'No informado',
     currentPlanId: customer.plan_actual_id,
+    currentPlanType: formatLabel(currentPlan?.tipo_oferta ?? ''),
+    currentPlanPrice: currentPlan ? formatMoney(currentPlan.precio_mensual) : 'No informado',
+    currentPlanSegment: formatLabel(currentPlan?.segmento_objetivo ?? ''),
+    currentPlanGb: currentPlan ? formatGb(currentPlan.gb_incluidos) : 'No informado',
+    currentPlanDescription: currentPlan?.descripcion_corta ?? 'Sin descripción disponible.',
     billingAvgLabel: formatMoney(customer.monto_facturado_prom),
     preferredChannel: customer.canal_mas_usado || 'No informado',
     services: { mobile: customer.tiene_movil, home: customer.tiene_hogar, internet: customer.tiene_internet_hogar },
