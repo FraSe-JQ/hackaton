@@ -3,16 +3,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#00517A',
-        muted: '#557783',
-        line: '#D3E1E4',
-        surface: '#ffffff',
-        soft: '#DDE8EA',
-        canvas: '#DDE8EA',
-        green: { DEFAULT: '#8DC63F', dark: '#00517A' },
-        blue: '#51C6D9',
-        amber: '#8DC63F',
-        red: '#a83c3c',
+        // Identidad y navegación.
+        brand: { DEFAULT: '#009BF4', dark: '#0072CE' },
+        // Tecnología, IA, información y estados.
+        cyan: { DEFAULT: '#00A9E0', soft: '#E8F4FC' },
+        // Sólo "todo está bien": elegible, ahorro, recomendación positiva.
+        success: { DEFAULT: '#78BE20', soft: '#EAF6E1' },
+        // Sólo rechazo, error o alerta.
+        danger: { DEFAULT: '#E51B23', soft: '#FDE8EC' },
+        ink: '#123B66',
+        muted: '#5B7896',
+        line: '#D9E2EA',
+        surface: '#FFFFFF',
+        soft: '#E8F4FC',
+        canvas: '#F5F7F9',
       },
       fontSize: {
         xs: ['12px', { lineHeight: '1.35' }],
