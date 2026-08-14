@@ -1,5 +1,6 @@
 // Sirve desde `public/`, así que se referencia por URL y no por import.
-const ICON_URL = '/icon.png'
+// `BASE_URL` ya trae la barra final: en local es `/` y en GitHub Pages `/hackaton/`.
+const ICON_URL = `${import.meta.env.BASE_URL}icon.png`
 
 // Proporción del archivo original (608x449).
 const RATIO = 449 / 608
