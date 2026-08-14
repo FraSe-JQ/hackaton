@@ -105,7 +105,7 @@ function PresentBar({ canPresent, selectedName, retrying, onPresent }: { canPres
         type="button"
         onClick={onPresent}
         disabled={!canPresent}
-        className="inline-flex h-9 flex-none items-center gap-2 rounded-control bg-green px-4 text-xs font-medium text-white transition-colors hover:bg-[#087b4b] disabled:cursor-not-allowed disabled:bg-line disabled:text-muted"
+        className="inline-flex h-9 flex-none items-center gap-2 rounded-control bg-brand px-4 text-xs font-medium text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-line disabled:text-muted"
       >
         <ArrowUpRight size={14} /> Presentar oferta
       </button>
@@ -121,21 +121,21 @@ function ResponseBar({ onSetOutcome, onRaiseObjection }: { onSetOutcome: (result
         <button
           type="button"
           onClick={onRaiseObjection}
-          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-amber"
+          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-cyan"
         >
           <MessageCircleWarning size={14} /> Objeción
         </button>
         <button
           type="button"
           onClick={() => onSetOutcome('accepted')}
-          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-green"
+          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-success"
         >
           <Check size={14} /> Aceptado
         </button>
         <button
           type="button"
           onClick={() => onSetOutcome('rejected')}
-          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-red"
+          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-danger"
         >
           <X size={14} /> Rechazado
         </button>
@@ -146,23 +146,23 @@ function ResponseBar({ onSetOutcome, onRaiseObjection }: { onSetOutcome: (result
 
 function ObjectionBar({ likelyObjection, onHandled, onReject }: { likelyObjection: string; onHandled: () => void; onReject: () => void }) {
   return (
-    <div className="flex flex-none flex-wrap items-center justify-between gap-2 rounded-card border border-amber/40 bg-amber/5 px-3 py-2">
+    <div className="flex flex-none flex-wrap items-center justify-between gap-2 rounded-card border border-cyan/40 bg-cyan-soft px-3 py-2">
       <p className="flex items-center gap-1.5 text-xs text-ink">
-        <MessageCircleWarning size={14} className="flex-none text-amber" />
+        <MessageCircleWarning size={14} className="flex-none text-cyan" />
         Objeción en curso · usa el rebate para <strong className="font-medium">{likelyObjection.toLowerCase()}</strong>
       </p>
       <div className="flex items-center gap-2">
         <button
           type="button"
           onClick={onReject}
-          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-red"
+          className="inline-flex h-9 items-center gap-1.5 rounded-control border border-line bg-surface px-4 text-xs font-medium text-ink transition-colors hover:border-danger"
         >
           <X size={14} /> No se superó
         </button>
         <button
           type="button"
           onClick={onHandled}
-          className="inline-flex h-9 items-center gap-1.5 rounded-control bg-green px-4 text-xs font-medium text-white transition-colors hover:bg-[#087b4b]"
+          className="inline-flex h-9 items-center gap-1.5 rounded-control bg-brand px-4 text-xs font-medium text-white transition-colors hover:bg-brand-dark"
         >
           <Check size={14} /> Objeción superada
         </button>
@@ -190,9 +190,9 @@ function ConfirmBar({
 }) {
   const accepted = pendingOutcome === 'accepted'
   return (
-    <div className={`flex flex-none flex-wrap items-center justify-between gap-2 rounded-card border px-3 py-2 ${accepted ? 'border-green/40 bg-green/5' : 'border-red/40 bg-red/5'}`}>
+    <div className={`flex flex-none flex-wrap items-center justify-between gap-2 rounded-card border px-3 py-2 ${accepted ? 'border-success/50 bg-success-soft' : 'border-danger/40 bg-danger-soft'}`}>
       <p className="text-xs text-ink">
-        Vas a registrar: <strong className={`font-medium ${accepted ? 'text-green-dark' : 'text-red'}`}>{accepted ? 'Aceptado' : 'Rechazado'}</strong>
+        Vas a registrar: <strong className={`font-medium ${accepted ? 'text-success' : 'text-danger'}`}>{accepted ? 'Aceptado' : 'Rechazado'}</strong>
         <span className="text-muted"> · al registrar se finaliza la llamada</span>
       </p>
       <div className="flex items-center gap-2">
@@ -222,7 +222,7 @@ function ConfirmBar({
             onClick={() => onConfirm(true)}
             disabled={!canConfirm}
             title={!canConfirm ? 'Selecciona el motivo del rechazo' : undefined}
-            className="inline-flex h-9 items-center gap-1.5 rounded-control border border-green bg-surface px-3 text-xs font-medium text-green-dark transition-colors hover:bg-green/5 disabled:cursor-not-allowed disabled:border-line disabled:text-muted"
+            className="inline-flex h-9 items-center gap-1.5 rounded-control border border-brand bg-surface px-3 text-xs font-medium text-brand-dark transition-colors hover:bg-brand/5 disabled:cursor-not-allowed disabled:border-line disabled:text-muted"
           >
             <RotateCcw size={14} /> Registrar y ofrecer otra
           </button>
@@ -232,7 +232,7 @@ function ConfirmBar({
           onClick={() => onConfirm(false)}
           disabled={!canConfirm}
           title={!canConfirm ? 'Selecciona el motivo del rechazo' : undefined}
-          className="inline-flex h-9 items-center gap-1.5 rounded-control bg-green-dark px-4 text-xs font-medium text-white disabled:cursor-not-allowed disabled:bg-line disabled:text-muted"
+          className="inline-flex h-9 items-center gap-1.5 rounded-control bg-brand-dark px-4 text-xs font-medium text-white disabled:cursor-not-allowed disabled:bg-line disabled:text-muted"
         >
           <Check size={14} /> Registrar y finalizar
         </button>
@@ -246,12 +246,12 @@ function PresentedOffer({ offer, pendingOutcome, objecting, rebate }: { offer: O
     <section
       aria-label="Oferta presentada"
       className={`flex-none rounded-card border-2 bg-surface p-3 ${
-        pendingOutcome === 'accepted' ? 'border-green' : pendingOutcome === 'rejected' ? 'border-red' : objecting ? 'border-amber/50' : 'border-green/40'
+        pendingOutcome === 'accepted' ? 'border-success' : pendingOutcome === 'rejected' ? 'border-danger' : objecting ? 'border-cyan/60' : 'border-brand/40'
       }`}
     >
       <div className="flex items-center gap-4">
         <div className="min-w-0 flex-1">
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-green-dark">
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-dark">
             <Sparkles size={12} /> {RANK_LABEL[offer.rank]} · presentada
           </span>
           <strong className="mt-0.5 block truncate text-base font-medium text-ink">{offer.name}</strong>
@@ -261,23 +261,23 @@ function PresentedOffer({ offer, pendingOutcome, objecting, rebate }: { offer: O
         <dl className="hidden flex-none gap-4 text-xs md:flex">
           <Metric label="Precio" value={offer.priceLabel} hint={offer.savingsLabel} />
           <Metric label="Datos" value={offer.gbLabel} />
-          <Metric label="Delta" value={offer.deltaLabel} tone={offer.deltaTone === 'up' ? 'text-green-dark' : 'text-amber'} />
+          <Metric label="Delta" value={offer.deltaLabel} tone={offer.deltaTone === 'up' ? 'text-success' : 'text-danger'} />
         </dl>
 
         <div className="flex-none text-right">
-          <strong className="block text-lg font-medium leading-none text-green-dark">{offer.probability}%</strong>
+          <strong className="block text-lg font-medium leading-none text-brand-dark">{offer.probability}%</strong>
           <span className="block text-xs text-muted">probabilidad</span>
         </div>
 
         {pendingOutcome && (
-          <span className={`flex-none rounded-control px-2.5 py-1 text-xs font-medium ${pendingOutcome === 'accepted' ? 'bg-green/10 text-green-dark' : 'bg-red/10 text-red'}`}>
+          <span className={`flex-none rounded-control px-2.5 py-1 text-xs font-medium ${pendingOutcome === 'accepted' ? 'bg-success-soft text-success' : 'bg-danger-soft text-danger'}`}>
             {pendingOutcome === 'accepted' ? 'Aceptado' : 'Rechazado'}
           </span>
         )}
       </div>
 
       {objecting && (
-        <p className="mt-2.5 rounded-control bg-amber/10 p-2.5 text-xs leading-snug text-ink">
+        <p className="mt-2.5 rounded-control bg-cyan-soft p-2.5 text-xs leading-snug text-ink">
           <strong className="font-medium">Rebate sugerido:</strong> {rebate}
         </p>
       )}
@@ -290,7 +290,7 @@ function Metric({ label, value, hint, tone = 'text-ink' }: { label: string; valu
     <div>
       <dt className="text-muted">{label}</dt>
       <dd className={`mt-0.5 font-medium ${tone}`}>{value}</dd>
-      {hint && <dd className="mt-0.5 text-green-dark">{hint}</dd>}
+      {hint && <dd className="mt-0.5 text-success">{hint}</dd>}
     </div>
   )
 }

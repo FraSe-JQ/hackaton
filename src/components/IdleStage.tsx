@@ -10,7 +10,7 @@ export function IdleStage({ prep, offers, onStartCall }: { prep: IdlePrepView; o
           <button
             type="button"
             onClick={onStartCall}
-            className="group grid h-36 w-36 place-items-center rounded-full bg-green text-white shadow-[0_10px_24px_rgba(141,198,63,0.32)] ring-8 ring-green/10 transition-transform hover:scale-105 active:scale-100"
+            className="group grid h-36 w-36 place-items-center rounded-full bg-success text-white shadow-[0_10px_24px_rgba(120,190,32,0.32)] ring-8 ring-success/15 transition-transform hover:scale-105 active:scale-100"
           >
             <span className="flex flex-col items-center gap-1.5">
               <Phone size={26} />
@@ -48,7 +48,7 @@ export function IdleStage({ prep, offers, onStartCall }: { prep: IdlePrepView; o
 
 function PrepColumn({ prep }: { prep: IdlePrepView }) {
   return (
-    <section aria-label="Sugerencias previas a la llamada" className="flex min-h-0 flex-col rounded-card border border-line bg-[#F1F7F8] p-3">
+    <section aria-label="Sugerencias previas a la llamada" className="flex min-h-0 flex-col rounded-card border border-line bg-canvas p-3">
       <header className="flex items-baseline justify-between gap-2">
         <h2 className="text-sm font-medium text-ink">Sugerencias IA · antes de llamar</h2>
       </header>
@@ -64,7 +64,7 @@ function PrepColumn({ prep }: { prep: IdlePrepView }) {
 function PrepCard({ icon, label, text }: { icon: React.ReactNode; label: string; text: string }) {
   return (
     <div className="flex gap-2.5 rounded-card border border-line bg-surface p-3">
-      <div className="grid h-7 w-7 flex-none place-items-center rounded-control bg-soft text-green-dark">{icon}</div>
+      <div className="grid h-7 w-7 flex-none place-items-center rounded-control bg-cyan-soft text-cyan">{icon}</div>
       <div className="min-w-0">
         <span className="block text-xs font-medium text-ink">{label}</span>
         <p className="mt-1 text-xs leading-snug text-muted">{text}</p>

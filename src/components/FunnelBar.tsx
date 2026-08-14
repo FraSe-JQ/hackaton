@@ -9,15 +9,15 @@ export function FunnelBar({ steps }: { steps: FunnelStep[] }) {
           {index > 0 && <span className="h-px w-6 bg-line" aria-hidden="true" />}
           <span
             className={`inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-medium ${
-              step.status === 'done' ? 'text-green-dark' : step.status === 'active' ? 'text-ink' : 'text-muted'
+              step.status === 'done' ? 'text-brand-dark' : step.status === 'active' ? 'text-ink' : 'text-muted'
             }`}
           >
             <span
               className={`grid h-4 w-4 place-items-center rounded-full border text-[10px] ${
                 step.status === 'done'
-                  ? 'border-green bg-green text-white'
+                  ? 'border-brand bg-brand text-white'
                   : step.status === 'active'
-                    ? 'border-green-dark text-green-dark'
+                    ? 'border-brand-dark text-brand-dark'
                     : 'border-line text-muted'
               }`}
             >
